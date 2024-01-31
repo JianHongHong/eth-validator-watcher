@@ -78,7 +78,8 @@ Command line options
 │                                                                             [default: BeaconType.OTHER]                                                      │
 │    --relay-url                TEXT                                          URL of allow listed relay                                                        │
 │    --liveness-file            PATH                                          Liveness file                                                                    │
-│    --help                                                                   Show this message and exit.                                                      │
+│    --help                                                                   Show this message and exit.                                                      |
+│    --pagerduty                                                              Enable pagerduty calls. Need to set PAGERDUTY_API_TOKEN and PAGERDUTY_SERVICE_ID |
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 

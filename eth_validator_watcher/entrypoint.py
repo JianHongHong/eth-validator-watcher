@@ -102,7 +102,7 @@ def handler(
     pagerduty: bool = Option(
         False, 
         help="Using PagerDuty for alerts", 
-        show_default=True
+        show_default=False
     ),
     beacon_type: BeaconType = Option(
         BeaconType.OTHER,
