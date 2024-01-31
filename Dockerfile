@@ -6,7 +6,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --progress-bar off .
 
 # Use Python 3.11 from Debian 12
-FROM gcr.io/distroless/python3-debian12:nonroot
+FROM python:3.11.6-slim
 
 COPY --from=builder /app /app
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
