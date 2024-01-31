@@ -100,9 +100,9 @@ def handler(
         show_default=False,
     ),
     pagerduty: bool = Option(
-        False, 
-        help="Using PagerDuty for alerts", 
-        show_default=False
+        False, "--pagerduty", 
+        is_flag=True, 
+        help="Enable PagerDuty integration"
     ),
     beacon_type: BeaconType = Option(
         BeaconType.OTHER,
@@ -183,6 +183,7 @@ def handler(
             web3signer_url,
             fee_recipient,
             slack_channel,
+            pagerduty,
             beacon_type,
             relay_url,
             liveness_file,

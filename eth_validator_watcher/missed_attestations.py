@@ -10,7 +10,6 @@ from eth_validator_watcher.models import BeaconType
 from .beacon import Beacon
 from .models import Validators
 from .utils import LimitedDict, Slack
-from .entrypoint import pd_token, pd_service_id
 
 print = functools.partial(print, flush=True)
 
@@ -146,6 +145,7 @@ def process_double_missed_attestations(
         slack.send_message(message_slack)
 
     if pagerduty:
+            from .entrypoint import pd_token, pd_service_id
             session = APISession(pd_token)
             session.trigger_incident(
                 pd_service_id,
