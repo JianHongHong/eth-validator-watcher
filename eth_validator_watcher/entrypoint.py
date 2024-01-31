@@ -99,6 +99,11 @@ def handler(
         help="Slack channel to send alerts - SLACK_TOKEN env var must be set",
         show_default=False,
     ),
+    pagerduty: bool = Option(
+        False, 
+        help="Using PagerDuty for alerts", 
+        show_default=True
+    ),
     beacon_type: BeaconType = Option(
         BeaconType.OTHER,
         case_sensitive=False,
@@ -193,12 +198,15 @@ def _handler(
     web3signer_url: str | None,
     fee_recipient: str | None,
     slack_channel: str | None,
+    pagerduty: bool,
     beacon_type: BeaconType,
     relays_url: List[str],
     liveness_file: Path | None,
 ) -> None:
     """Just a wrapper to be able to test the handler function"""
     slack_token = environ.get("SLACK_TOKEN")
+    pd_token = environ.get("PAGERDUTY_API_TOKEN")
+    pd_service_id = environ.get("PAGERDUTY_SERVICE_ID")
 
     if fee_recipient is not None and execution_url is None:
         raise typer.BadParameter(
@@ -368,6 +376,7 @@ def _handler(
                 our_epoch2active_idx2val,
                 epoch,
                 slack,
+                pagerduty
             )
 
             last_missed_attestations_process_epoch = epoch

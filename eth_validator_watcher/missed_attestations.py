@@ -1,6 +1,7 @@
 """Contains the logic to check if the validators missed attestations."""
 
 import functools
+from pdpyras import APISession
 
 from prometheus_client import Gauge
 
@@ -9,6 +10,7 @@ from eth_validator_watcher.models import BeaconType
 from .beacon import Beacon
 from .models import Validators
 from .utils import LimitedDict, Slack
+from .entrypoint import pd_token, pd_service_id
 
 print = functools.partial(print, flush=True)
 
@@ -87,6 +89,7 @@ def process_double_missed_attestations(
     epoch_to_index_to_validator_index: LimitedDict,
     epoch: int,
     slack: Slack | None,
+    pagerduty: bool
 ) -> set[int]:
     """Process double missed attestations.
 
@@ -139,5 +142,13 @@ def process_double_missed_attestations(
         )
 
         slack.send_message(message_slack)
+
+    if pagerduty:
+            session = APISession(pd_token)
+            session.trigger_incident(
+                pd_service_id,
+                "Double Missed Attestations Detected",
+                details={"message": message_console}
+            )
 
     return double_dead_indexes
