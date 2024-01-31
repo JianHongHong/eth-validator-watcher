@@ -66,7 +66,7 @@ def process_missed_blocks_head(
         (negative_emoji, "missed  ") if missed else (positive_emoji, "proposed")
     )
 
-    short_proposer_pubkey = proposer_pubkey[:10]
+    short_proposer_pubkey = proposer_pubkey
 
     message_console = (
         f"{emoji} {'Our ' if is_our_validator else '    '}validator "
@@ -148,7 +148,7 @@ def process_missed_blocks_finalized(
         try:
             beacon.get_header(slot_)
         except NoBlockError:
-            short_proposer_pubkey = proposer_pubkey[:10]
+            short_proposer_pubkey = proposer_pubkey
 
             message_console = (
                 f"❌ Our validator {short_proposer_pubkey} missed block at finalized "

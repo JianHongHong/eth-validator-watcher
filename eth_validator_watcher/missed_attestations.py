@@ -71,7 +71,8 @@ def process_missed_attestations(
         index_to_validator[first_index].pubkey for first_index in first_indexes
     )
 
-    short_first_pubkeys = [pubkey[:10] for pubkey in first_pubkeys]
+    # short_first_pubkeys = [pubkey[:10] for pubkey in first_pubkeys]
+    short_first_pubkeys = [pubkey for pubkey in first_pubkeys]
     short_first_pubkeys_str = ", ".join(short_first_pubkeys)
 
     print(
@@ -123,7 +124,8 @@ def process_double_missed_attestations(
         index_to_validator[first_index].pubkey for first_index in first_indexes
     )
 
-    short_first_pubkeys = [pubkey[:10] for pubkey in first_pubkeys]
+    # short_first_pubkeys = [pubkey[:10] for pubkey in first_pubkeys]
+    short_first_pubkeys = [pubkey for pubkey in first_pubkeys]
     short_first_pubkeys_str = ", ".join(short_first_pubkeys)
 
     message_console = (

@@ -103,7 +103,7 @@ def _log(
         first_not_perfect_pubkeys = sorted(not_perfect_pubkeys)[:5]
 
         short_first_not_perfect_pubkeys = [
-            pubkey[:10] for pubkey in first_not_perfect_pubkeys
+            pubkey for pubkey in first_not_perfect_pubkeys
         ]
 
         short_first_not_perfect_pubkeys_str = ", ".join(short_first_not_perfect_pubkeys)

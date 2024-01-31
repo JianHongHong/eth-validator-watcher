@@ -48,7 +48,7 @@ def process_future_blocks_proposal(
     if is_new_epoch:
         for item in filtered:
             print(
-                f"💍 Our validator {item.pubkey[:10]} is going to propose a block "
+                f"💍 Our validator {item.pubkey} is going to propose a block "
                 f"at   slot {item.slot} (in {item.slot - slot} slots)"
             )
 

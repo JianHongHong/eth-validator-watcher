@@ -42,7 +42,7 @@ def process_fee_recipient(
     if proposer_index not in index_to_validator:
         return
 
-    short_proposer_pubkey = index_to_validator[proposer_index].pubkey[:10]
+    short_proposer_pubkey = index_to_validator[proposer_index].pubkey
     slot = block.data.message.slot
     epoch = slot // NB_SLOT_PER_EPOCH
 

@@ -149,7 +149,7 @@ def process_suboptimal_attestations(
             for first_index in first_indexes
         )
 
-        short_first_pubkeys = [pubkey[:10] for pubkey in first_pubkeys]
+        short_first_pubkeys = [pubkey for pubkey in first_pubkeys]
         short_first_pubkeys_str = ", ".join(short_first_pubkeys)
 
         print(

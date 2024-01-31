@@ -63,7 +63,7 @@ class ExitedValidators:
         )
 
         for index in our_new_exited_unslashed_indexes:
-            message = f"🚶 Our validator {our_exited_unslashed_index_to_validator[index].pubkey[:10]} is exited"
+            message = f"🚶 Our validator {our_exited_unslashed_index_to_validator[index].pubkey} is exited"
             print(message)
 
             if self.__slack is not None:
