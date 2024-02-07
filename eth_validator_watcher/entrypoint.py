@@ -206,8 +206,6 @@ def _handler(
 ) -> None:
     """Just a wrapper to be able to test the handler function"""
     slack_token = environ.get("SLACK_TOKEN")
-    pd_token = environ.get("PAGERDUTY_API_TOKEN")
-    pd_service_id = environ.get("PAGERDUTY_SERVICE_ID")
 
     if fee_recipient is not None and execution_url is None:
         raise typer.BadParameter(

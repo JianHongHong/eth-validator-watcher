@@ -1,7 +1,8 @@
 """Contains the logic to check if the validators missed attestations."""
 
+from os import environ
 import functools
-from pdpyras import APISession
+from pdpyras import EventsAPISession
 
 from prometheus_client import Gauge
 
@@ -145,12 +146,13 @@ def process_double_missed_attestations(
         slack.send_message(message_slack)
 
     if pagerduty:
-            from .entrypoint import pd_token, pd_service_id
-            session = APISession(pd_token)
-            session.trigger_incident(
-                pd_service_id,
-                "Double Missed Attestations Detected",
-                details={"message": message_console}
-            )
+        pd_routing_key = environ.get("PAGERDUTY_INTEGRATION_KEY") 
+        session = EventsAPISession(pd_routing_key)
+        session.trigger(
+            "Double Missed Attestations Detected",
+            dedup_key=f"double-missed-attestations-{epoch}",
+            source='eth-validator-watcher-staging',
+            custom_details={"message": message_console}
+        )
 
     return double_dead_indexes

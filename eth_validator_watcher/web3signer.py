@@ -19,5 +19,6 @@ class Web3Signer:
 
         Returns the corresponding set of public keys.
         """
-        resp = requests.get(f"{self.__url}/api/v1/eth2/publicKeys")
+        # resp = requests.get(f"{self.__url}/api/v1/eth2/publicKeys")
+        resp = requests.get(f"{self.__url}/api/validators/active-pubkeys") # using from backend api instead
         return set(resp.json())

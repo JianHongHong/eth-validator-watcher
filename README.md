@@ -66,7 +66,7 @@ Command line options
 │ *  --beacon-url               TEXT                                          URL of beacon node [required]                                                    │
 │    --execution-url            TEXT                                          URL of execution node                                                            │
 │    --pubkeys-file-path        FILE                                          File containing the list of public keys to watch                                 │
-│    --web3signer-url           TEXT                                          URL to web3signer managing keys to watch                                         │
+│    --web3signer-url           TEXT                                          URL to backend api for managing keys to watch                                    │
 │    --fee-recipient            TEXT                                          Fee recipient address - --execution-url must be set                              │
 │    --slack-channel            TEXT                                          Slack channel to send alerts - SLACK_TOKEN env var must be set                   │
 │    --beacon-type              [lighthouse|nimbus|old-prysm|old-teku|other]  Use this option if connected to a Teku < 23.6.0, Prysm < 4.0.8, Lighthouse or    │
@@ -79,7 +79,7 @@ Command line options
 │    --relay-url                TEXT                                          URL of allow listed relay                                                        │
 │    --liveness-file            PATH                                          Liveness file                                                                    │
 │    --help                                                                   Show this message and exit.                                                      |
-│    --pagerduty                                                              Enable pagerduty calls. Need to set PAGERDUTY_API_TOKEN and PAGERDUTY_SERVICE_ID |
+│    --pagerduty                                                              Enable pagerduty calls. Need to set PAGERDUTY_INTEGRATION_KEY                    |
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
